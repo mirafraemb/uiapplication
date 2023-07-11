@@ -1,0 +1,115 @@
+
+Step 1:
+
+Download raspberry pi linux image from following website
+
+https://www.raspberrypi.com/software/operating-systems/
+
+check for inserted USB drive
+
+using lsblk
+
+then use dd command
+
+sudo dd if=2023-02-21-raspios-bullseye-arm64.img.xz of=/dev/sda bs=4M status=progress
+or 
+use baleno etcher application
+
+Step 2:
+
+https://raspberrytips.com/upgrade-raspbian-lite-to-desktop/
+
+
+Type in terminal
+
+sudo apt-get update
+ 
+sudo apt install xserver-xorg
+
+sudo apt install raspberrypi-ui-mods
+
+sudo apt install lightdm
+ 
+ 
+ 
+Step 3:
+
+https://linuxhint.com/install-qt-creator-raspberry-pi/
+
+sudo apt-get update && sudo apt-get upgrade
+
+
+sudo apt-get -y install build-essential openssl libssl-dev libssl1.0 libgl1-mesa-dev libqt5x11extras5
+
+sudo apt-get install qtmultimedia5-dev
+
+sudo apt-get install qtcreator
+
+sudo apt-get install qt5*
+
+sudo apt-get install libudev
+
+sudo apt-get install libqt5multimedia5
+
+sudo apt-get install libqt5multimedia5-plugins
+
+sudo apt-get install libqt5multimediawidgets5
+
+sudo apt-get install vim
+
+sudo apt-get install gedit
+
+sudo apt-get install firefox-esr
+
+Step 4:
+To install application
+sudo apt-get install git
+
+clone the project
+
+git clone https://github.com/divyakunagalimatt/snapdragon-_HMI_qtcode.git
+
+then
+
+make clean all
+
+then edit Makefile
+
+add -ludev after -lpthread
+
+then
+
+make clean all
+
+then run the application
+
+./test
+
+Step 5:
+
+To put application in auto start mode
+
+Create a file called display.desktop in following path using sudo command
+
+/etc/xdg/autostart/display.desktop
+
+Then add following lines :
+
+[Desktop Entry]
+Name=PiCounter
+Exec=sh /home/pi/Documents/qt_programs/Infotainment/Widget6/Snapdragon_HMI2/test11/runscript.sh
+
+The path /home/pi/Documents/qt_programs/Infotainment/Widget6/Snapdragon_HMI2/test11/ is subject to change based on the project and executable's path location
+
+The contents of runscript.sh are :
+cd /home/pi/Documents/qt_programs/Infotainment/Widget6/Snapdragon_HMI2/test11
+./test
+
+The path /home/pi/Documents/qt_programs/Infotainment/Widget6/Snapdragon_HMI2/test11/ is subject to change based on the project and executable's path location
+
+Save the file and change the permission as follows:
+
+chmod 777 runscript.sh
+
+
+
